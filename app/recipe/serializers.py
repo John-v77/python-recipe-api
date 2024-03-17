@@ -5,10 +5,15 @@ Serializers for repice APIs
 from rest_framework import serializers
 from core.models import Recipe
 
-class RecipeSerializer(serializer.ModelSerializer):
-    """Serializer for recipes"""
+class RecipeSerializer(serializers.ModelSerializer):
+    """Serializer for recipes."""
 
     class Meta:
         mode: Recipe
         fields: ['id', 'title', 'time_minutes', 'price', 'link']
         read_only_fields = ['id']
+
+class RecipeDetailSerializer(RecipeSerializer):
+    """Serializer for recipe detail view."""
+    class Meta(RecipeSerializer.Meta):
+        fields = RecipeSerializer.Meta.fields + ['description']
