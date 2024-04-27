@@ -1,2 +1,2 @@
 # python-recipe-api
-Recipe API project
+Backend REST API with Python &amp; Django
