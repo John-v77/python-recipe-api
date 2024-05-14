@@ -148,7 +148,7 @@ class PrivateRecipeApiTests(TestCase):
 
         payload = {
             'title': 'New recipe title',
-            'link': 'https://example.com/recipe.pdf',
+            'link': 'https://example.com/new-recipe.pdf',
             'description':'New recipe description',
             'time_minutes': 10,
             'price': Decimal('2.50'),
@@ -301,10 +301,10 @@ class PrivateRecipeApiTests(TestCase):
         self.assertEqual(recipes.count(), 1)
         recipe = recipes[0]
         self.assertEqual(recipe.ingredients.count(), 2)
-        for ingredients in payload['ingredients']:
-            existing = recipe.ingredients.filter(
+        for ingredient in payload['ingredients']:
+            exists = recipe.ingredients.filter(
                 name=ingredient['name'],
-                user=self.user,
+                user=self.user
             ).exists()
             self.assertTrue(exists)
 
