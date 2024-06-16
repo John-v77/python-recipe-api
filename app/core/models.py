@@ -11,7 +11,7 @@ from django.contrib.auth.models import (
     AbstractBaseUser,
     BaseUserManager,
     PermissionsMixin
-    )
+)
 
 
 def recipe_image_file_path(instance, filename):
