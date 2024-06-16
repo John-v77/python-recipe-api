@@ -119,16 +119,16 @@ class PrivateIngredientsApiTests(TestCase):
         ing = Ingredient.objects.create(user=self.user, name='Eggs')
         Ingredient.objects.create(user=self.user, name='Lentils')
         recipe1 = Recipe.objects.create(
+            user=self.user,
             title='Eggs Benedict',
             time_minutes=60,
             price=Decimal('7.00'),
-            user.self.user,
         )
         recipe2 = Recipe.objects.create(
+            user=self.user,
             title='Herb Eggs',
             time_minutes = 20,
             price=Decimal('4.00'),
-            user=self.user,
         )
 
         recipe1.ingredients.add(ing)

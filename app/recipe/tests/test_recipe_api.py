@@ -36,7 +36,7 @@ def detail_url(recipe_id):
 
 def image_upload_url(recipe_id):
     """Create and return an image upload URL."""
-    return reverse('recipe: recipe-upload-image', args=[recipe_id])
+    return reverse('recipe:recipe-upload-image', args=[recipe_id])
 
 
 def create_recipe(user, **params):
@@ -394,10 +394,10 @@ class PrivateRecipeApiTests(TestCase):
             self.assertTrue(exists)
 
 class ImageUploadTests(TestCase):
-    """Test for the image upload API."""
+    """Tests for the image upload API."""
     def setUp(self):
         self.client = APIClient()
-        self.user=get_user_model().objects.create_user(
+        self.user = get_user_model().objects.create_user(
             'user@example.com',
             'password123',
         )
@@ -416,7 +416,7 @@ class ImageUploadTests(TestCase):
             img.save(image_file, format='JPEG')
             image_file.seek(0)
             payload = {'image': image_file}
-            res = self.client.post(url, payload, format="multipart")
+            res = self.client.post(url, payload, format='multipart')
 
         self.recipe.refresh_from_db()
         self.assertEqual(res.status_code, status.HTTP_200_OK)
